@@ -1,8 +1,7 @@
 const isPi = require('detect-rpi');
+const { Gpio } = isPi() ? require('pigpio') : require('./mock');
 const { clamp } = require('../utils');
 
-const isGPIOAvailable = process.env.NODE_ENV === 'production' && isPi();
-const { Gpio } = isGPIOAvailable ? require('pigpio') : require('./mock');
 const RANGE = 1000;
 const backlight = new Gpio(18, { mode: Gpio.OUTPUT });
 
