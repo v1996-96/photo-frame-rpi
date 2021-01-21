@@ -7,6 +7,7 @@ const backlight = new Gpio(18, { mode: Gpio.OUTPUT });
 
 backlight.pwmFrequency(1000);
 backlight.pwmRange(RANGE);
+backlight.pwmWrite(RANGE);
 
 const setBacklightHandler = (value) => {
     backlight.pwmWrite(clamp(value, 0, RANGE));
